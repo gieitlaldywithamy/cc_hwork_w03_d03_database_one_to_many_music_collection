@@ -9,7 +9,8 @@ class Artist
   def initialize( options_hash )
     @first_name = options_hash['first_name']
     @last_name = options_hash['last_name']
-    @id = options_hash['id'].to_i if options_hash['id']
+    @id = options_hash['id'].to_i
+
   end
 
   def save()
@@ -42,6 +43,11 @@ class Artist
     = ($1, $2) WHERE id = $3;"
     values = [@first_name, @last_name, @id]
     SqlRunner.run(sql, values)
+  end
+
+  def Artist.delete_all()
+    sql = "DELETE FROM artists;"
+    SqlRunner.run(sql)
   end
 
 

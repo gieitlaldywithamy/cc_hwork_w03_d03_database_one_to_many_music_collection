@@ -1,4 +1,5 @@
 require_relative('../db/sqlrunner')
+require_relative('artist')
 
 class Album
 
@@ -28,5 +29,11 @@ class Album
     return albums
   end
 
-
+  def artist()
+    sql = "SELECT * FROM artists WHERE id = $1;"
+    values = [@artist_id]
+    artist_hash = SqlRunner.run(sql, values)[0]
+    artist = Artist.new(artist_hash)
+    return artist
+  end
 end

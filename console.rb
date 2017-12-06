@@ -36,6 +36,9 @@ album1.save()
 album2.save()
 album3.save()
 
+artist1.last_name = "Doggy Dogg"
+artist1.update()
+
 
 
 artists = Artist.all()

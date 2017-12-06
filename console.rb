@@ -39,8 +39,8 @@ album3.save()
 artist1.last_name = "Doggy Dogg"
 artist1.update()
 
-
-
+album1.genre = "happy hardcore"
+album1.update()
 artists = Artist.all()
 albums = Album.all()
 

@@ -43,8 +43,11 @@ album1.genre = "happy hardcore"
 album1.update()
 artists = Artist.all()
 albums = Album.all()
-Album.delete_all()
-Artist.delete_all()
+# Artist.delete_by_id(11)
+Album.delete_by_id(17)
+Artist.delete_by_id(12)
+# Album.delete_all()
+# Artist.delete_all()
 
 
 binding.pry

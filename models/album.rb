@@ -49,4 +49,10 @@ class Album
     sql = "DELETE FROM albums"
     SqlRunner.run(sql)
   end
+
+  def Album.delete_by_id(id)
+    sql = "DELETE FROM albums WHERE id=$1"
+    values = [id]
+    SqlRunner.run(sql, values)
+  end
 end

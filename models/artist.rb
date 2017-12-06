@@ -1,4 +1,5 @@
 require_relative('../db/sqlrunner.rb')
+require_relative('album')
 
 class Artist
 
@@ -23,4 +24,16 @@ class Artist
     artists = artist_hashes.map { |hash| Artist.new(hash) }
     return artists
   end
+
+
+  def albums()
+    sql = "SELECt * FROM albums WHERE artist_id = $1;"
+    albums_hashes = SqlRunner.run(sql, [@id])
+    albums = albums_hashes.map do |hash|
+      Album.new(hash)
+    end
+    return albums
+  end
+
+
 end

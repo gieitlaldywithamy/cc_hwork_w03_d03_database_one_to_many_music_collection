@@ -9,7 +9,7 @@ class Artist
   def initialize( options_hash )
     @first_name = options_hash['first_name']
     @last_name = options_hash['last_name']
-    @id = options_hash['id'].to_i
+    @id = options_hash['id'].to_i if options_hash['id']
 
   end
 
@@ -29,7 +29,7 @@ class Artist
 
 
   def albums()
-    sql = "SELECt * FROM albums WHERE artist_id = $1;"
+    sql = "SELECT * FROM albums WHERE artist_id = $1;"
     albums_hashes = SqlRunner.run(sql, [@id])
     albums = albums_hashes.map do |hash|
       Album.new(hash)
@@ -54,6 +54,13 @@ class Artist
     sql = "DELETE FROM artists WHERE id=$1;"
     values = [id]
     SqlRunner.run(sql, values)
+  end
+
+  def Artist.find_by_id(id)
+    sql = "SELECT * FROM artists WHERE id=$1"
+    values = [id]
+    artist_hash = SqlRunner.run(sql, values)[0]
+    return Artist.new(artist_hash)
   end
 
 

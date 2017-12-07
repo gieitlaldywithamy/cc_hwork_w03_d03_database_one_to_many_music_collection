@@ -48,7 +48,8 @@ Album.delete_by_id(17)
 Artist.delete_by_id(12)
 # Album.delete_all()
 # Artist.delete_all()
-
+p Album.find_by_id(18)
+p Artist.find_by_id(25)
 
 binding.pry
 nil
